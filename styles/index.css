@@ -1,0 +1,68 @@
+/* Genel reset ve font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header */
+header h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  text-align: center;
+  color: #00ffff;
+  text-shadow: 1px 1px 5px #000;
+}
+
+/* Menü */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 40px;
+}
+
+.menu-grid button {
+  background-color: #00ffff;
+  color: #000;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+.menu-grid button:hover:not(:disabled) {
+  background-color: #00cccc;
+  transform: scale(1.03);
+}
+
+.menu-grid button.disabled {
+  background-color: #333;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Mobil uyum */
+@media (min-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

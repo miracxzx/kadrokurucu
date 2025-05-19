@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rüya Kadron - Harekat JK</title>
+  <link rel="stylesheet" href="styles/dream-team.css" />
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏆 Rüya Kadronu Oluştur</h1>
+    <button onclick="goHome()">🏠 Ana Sayfa</button>
+  </header>
+
+  <main>
+    <!-- Takım seçme -->
+    <section id="team-selector">
+      <label for="teamSelect">Takım Seç:</label>
+      <select id="teamSelect">
+        <option value="besiktas">Beşiktaş</option>
+        <option value="galatasaray">Galatasaray</option>
+        <option value="fenerbahce">Fenerbahçe</option>
+        <option value="trabzonspor">Trabzonspor</option>
+      </select>
+    </section>
+
+    <!-- Diziliş seçme -->
+    <section id="formation-selector">
+      <label for="formationSelect">Diziliş Seç:</label>
+      <select id="formationSelect"></select>
+    </section>
+
+    <!-- Kadro sahası -->
+    <section id="team-grid"></section>
+
+    <!-- 🔍 Sadeleştirilmiş arama alanı -->
+    <section id="player-selection-panel">
+      <div id="filters">
+        <input type="text" id="searchName" placeholder="İsim Ara..." />
+        <button id="applyFilters">Filtrele</button>
+      </div>
+
+      <!-- 🧍 Oyuncu listesi -->
+      <div id="player-selection"></div>
+    </section>
+  </main>
+
+  <div id="team-actions">
+  <button id="saveTeamBtn">💾 Kadroyu Kaydet</button>
+  <button id="exportImageBtn">📸 Çıktı Al</button>
+</div>
+
+
+  <script src="scripts/dream-team.js"></script>
+</body>
+</html>
