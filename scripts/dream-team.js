@@ -227,6 +227,9 @@ document.getElementById("exportImageBtn").addEventListener("click", () => {
   });
 });
 
+function goHome() {
+  window.location.href = "index.html"; // Anasayfa dosya adın buysa
+}
 
 
 // Sayfa açılış
