@@ -63,6 +63,21 @@ function renderFormation(name) {
   });
 }
 
+// Silme butonu oluştur
+function createRemoveButton(slot) {
+  const removeBtn = document.createElement("div");
+  removeBtn.className = "remove-btn";
+  removeBtn.textContent = "✖";
+  removeBtn.title = "Kaldır";
+  removeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    slot.innerHTML = "";
+    slot.classList.remove("filled");
+    slot.appendChild(removeBtn);
+  });
+  return removeBtn;
+}
+
 // Slot oluştur (her slot için tekrar kullanılabilir)
 function createSlot(type, top, left) {
   const slot = document.createElement("div");
@@ -75,18 +90,7 @@ function createSlot(type, top, left) {
 
   makeSlotDroppable(slot);
 
-  // Silme butonu
-  const removeBtn = document.createElement("div");
-  removeBtn.className = "remove-btn";
-  removeBtn.textContent = "✖";
-  removeBtn.title = "Kaldır";
-  removeBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    slot.innerHTML = "";
-    slot.classList.remove("filled");
-    slot.appendChild(removeBtn);
-  });
-
+  const removeBtn = createRemoveButton(slot);
   slot.appendChild(removeBtn);
 
   return slot;
@@ -209,6 +213,38 @@ document.getElementById("saveTeamBtn").addEventListener("click", () => {
 
   localStorage.setItem("savedSquad", JSON.stringify(squad));
   alert("Kadron kaydedildi!");
+});
+
+document.getElementById("loadTeamBtn").addEventListener("click", () => {
+  const saved = localStorage.getItem("savedSquad");
+  if (!saved) {
+    alert("Kayıtlı kadro bulunamadı!");
+    return;
+  }
+  const squad = JSON.parse(saved);
+  const slots = document.querySelectorAll(".player-slot");
+
+  slots.forEach((slot, idx) => {
+    slot.innerHTML = "";
+    slot.classList.remove("filled");
+    const removeBtn = createRemoveButton(slot);
+    slot.appendChild(removeBtn);
+
+    const player = squad[idx];
+    if (player) {
+      if (player.image) {
+        const img = document.createElement("img");
+        img.src = player.image;
+        img.className = "player-photo";
+        slot.appendChild(img);
+      }
+      const nameTag = document.createElement("span");
+      nameTag.className = "player-name";
+      nameTag.textContent = player.name;
+      slot.appendChild(nameTag);
+      slot.classList.add("filled");
+    }
+  });
 });
 
 
